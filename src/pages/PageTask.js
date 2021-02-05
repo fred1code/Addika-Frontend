@@ -17,10 +17,10 @@ class PageTask extends React.Component {
   
   state = {
     data: [],
+    dataid: [],
     modalInsertar: false,
   };
   peticionGet = () => {
- 
     axios.get(url).then((response) => {
       this.setState({data: response.data.body});
     }).catch(err => {
@@ -28,7 +28,25 @@ class PageTask extends React.Component {
     });
   };
 
+  peticionGetId = (id) => {
+    axios.get(url+'/'+id).then((response) => {
+      this.setState({dataid: response.data.body[0]});
+    }).catch(err => {
+      console.log(err.message);
+    });
+  };
+
+  peticionDelete=(id)=>{
+    axios.delete(url+'/'+id).then((response) => {
+    }).catch(err => {
+      console.log(err.message);
+    });
+  };
+
   componentDidMount() {
+    this.peticionGet();
+  }
+  componentDidUpdate(){
     this.peticionGet();
   }
 
@@ -41,18 +59,17 @@ modalInsertar = () => {
   this.setState({ modalInsertar: !this.state.modalInsertar });
 };
 
+optenerValor = (params) =>{
+  
+  console.log(params);
+this.peticionGetId(params);
+  console.log(this.state.dataid);
+}
+
   render() {
     return (
       <div className="table-responsive">
         <NavBar />
-
-        <button onClick={() => this.modalInsertar()}>edit modal</button>
-
-
-      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModalRight"> Right Sidebar Modal </button>
-
-
-
 
         <table className="table" data-toogle="table" rowEvents={this.rowEvents}>
           <thead>
@@ -71,8 +88,12 @@ modalInsertar = () => {
                   <th>
                   {(() => {
         switch (task.completed) {
-          case 1:   return <img src={img1} className="checks" />;
-          case 0: return <img src={img} className="checks" />;
+          case 1:   return  <button type="button" className="bd" id="checks" data-toggle="modal" value={task.id} data-target="#myModalRight" onClick={() => this.optenerValor(task.id)}> 
+          <img src={img1} className="checks"></img>
+          </button>
+          case 0: return <button type="button" className="bd" id="checks" value={task.id} data-toggle="modal" data-target="#myModalRight" onClick={() => this.optenerValor(task.id)}> 
+          <img src={img} className="checks"></img>
+          </button>
           default:      return <img src={img} className="checks" />;
         }
       })()}
@@ -82,7 +103,7 @@ modalInsertar = () => {
                   <td>{task.title}</td>
                   <td>{day}</td>
                   <td>{task.name}</td>
-                  <td className="isd">{task.id}</td>
+                  <td className="">{task.id}</td>
 
                 </tr>
               )
@@ -101,15 +122,22 @@ modalInsertar = () => {
               <span aria-hidden="true">&times;</span>
             </button>
             <br/>
-              <h4 class="modal-title" className="fuent"> <strong> Title </strong></h4>
+              <h4 class="modal-title" className="fuent"> <strong> {this.state.dataid.title} </strong></h4>
             <br/>
-            <select class="custom-select" id="inputGroupSelect01">
-               <option value="0">Status: Pending</option>
-                <option value="1">Status: Ready</option>
-              </select>
-
+                    {(() => {
+        switch (this.state.dataid.completed) {
+          case 1:   return    <select class="custom-select" id="inputGroupSelect01">
+                                <option value="1" selected >Status: Ready</option> 
+                                <option value="0" >Status: Pending</option>
+                                </select>
+          case 0: return  <select class="custom-select" id="inputGroupSelect01">
+                               <option value="1" >Status: Ready</option> 
+                                <option value="0" selected>Status: Pending</option>
+                                   </select>
+          default: return <option value="0" selected>Status: Pending</option>
+        }
+      })()}
           </div>
-
 
           <div class="modal-body">
             <h5 className="fuent">
@@ -122,19 +150,10 @@ modalInsertar = () => {
 
               <h5 className="fuent"> <strong>Description</strong>  </h5>
 
-
-            <p> erroribus et. Diam incorrupte sit ex, cu pro prima error semper. </p>
-            <p> erroribus et. Diam incorrupte sit ex, cu pro prima error semper. </p>
-            <p> erroribus et. Diam incorrupte sit ex, cu pro prima error semper. </p>
-            <p> erroribus et. Diam incorrupte sit ex, cu pro prima error semper. </p>
-            <p> erroribus et. Diam incorrupte sit ex, cu pro prima error semper. </p>
-         
-         
-         
-         
-         
+              <div class="form-group">
+               <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" value={this.state.dataid.name}></textarea>
+                </div>
           </div>
-
 
           <div class="modal-footer foote">
 
@@ -146,7 +165,7 @@ modalInsertar = () => {
             
 
               <div className="btns">
-                 <button type="button"  class="btn btnn"  data-dismiss="modal" >
+                 <button type="button"  class="btn btnn"  data-dismiss="modal" onClick={() => this.peticionDelete(this.state.dataid.id)}>
               <img src={dele} className="im"></img>
              <strong> Delete</strong></button>
                 </div>

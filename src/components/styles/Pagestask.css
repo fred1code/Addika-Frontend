@@ -43,3 +43,8 @@
 .fuent{
 color:#1D223F;
 }
+.bd{
+    outline: none;
+    background: #F4F4F7;
+    border: 1px solid #F4F4F7;
+}
