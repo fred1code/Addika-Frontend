@@ -4,6 +4,7 @@ import img from "../images/check-out.svg";
 import img1 from "../images/check-in.svg";
 import "../components/styles/Pagestask.css";
 import axios from "axios";
+import {BootstrapTable} from 'bootstrap-table';
 
 const url = "http://localhost:3000/api/todos/";
 let newDate = new Date();
@@ -17,6 +18,8 @@ class PageTask extends React.Component {
  
     axios.get(url).then((response) => {
       this.setState({data: response.data.body});
+    }).catch(err => {
+      console.log(err.message);
     });
   };
 
@@ -24,11 +27,17 @@ class PageTask extends React.Component {
     this.peticionGet();
   }
 
+rowEvents={
+  onClick : (row) =>{
+    console.log(row);
+  }
+}
+
   render() {
     return (
-      <div>
+      <div className="table-responsive">
         <NavBar />
-        <table class="table">
+        <table className="table" data-toogle="table" rowEvents={this.rowEvents}>
           <thead>
             <tr>
               <th scope="col">#</th>
@@ -38,11 +47,13 @@ class PageTask extends React.Component {
             </tr>
           </thead>
 
-          <tbody>
+          <tbody >
             {this.state.data.map(task=>{
               return(
                 <tr>
                   <th>
+
+                   
                   {(() => {
         switch (task.completed) {
           case 1:   return <img src={img1} className="checks" />;

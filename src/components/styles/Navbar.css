@@ -29,6 +29,44 @@
 .v1 {
   border-left: 1px solid rgb(109, 109, 109);
 }
+
+.newtask{
+  width: 100%;
+  border-bottom: rgb(187, 187, 187) solid;
+padding-bottom: 10px;
+}
+.modal-header{
+  display: block;
+}
+
+.btn-prima{
+  background-color: #3C5CBF ;
+  color: white;
+}
+.modal-footer{
+  display: grid;
+  grid-template-columns: 50% 50%;
+  padding-left: 51%;
+}
+
+.mod{
+  width: 100px;
+  height: 45px;
+  text-align: center;
+}
+
+.cor{
+  background-color: #E4E5E9;
+  color: #1C223E;
+  border: 1px solid #E4E5E9;
+  text-align: justify;
+  padding-left: 17px;
+}
+
+.area{
+  height: 150px;
+}
+
 @media (max-width: 1030px) {
     .containers{
         grid-template-columns: 50% 30% 20%;
