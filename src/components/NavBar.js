@@ -3,7 +3,6 @@ import ad from "../images/add-enable.svg";
 
 import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
 import "./styles/Navbar.css";
-import { Component } from "react";
 import axios from "axios";
 const qs = require('qs');
 
@@ -53,7 +52,7 @@ class NavBar extends React.Component {
  
 
 
-    
+
 
 
   render() {
@@ -97,7 +96,7 @@ class NavBar extends React.Component {
 
             <div>
                <p>Description</p>
-            <input type="text" name="name" className="form-control area"  onChange={this.handleChange} value={form.name} />
+            <input type="textarea" name="name" className="form-control area"  onChange={this.handleChange} value={form.name} />
             </div>
            
           </ModalBody>
