@@ -4,20 +4,29 @@ import img from "../images/check-out.svg";
 import img1 from "../images/check-in.svg";
 import "../components/styles/Pagestask.css";
 import axios from "axios";
-import { Modal, ModalBody, ModalFooter, ModalHeader } from "reactstrap";
-import {BootstrapTable} from 'bootstrap-table';
 import { Button } from "bootstrap";
 import edit from '../images/pen.svg';
 import dele from '../images/delete.svg';
+const qs = require('qs');
 
 const url = "http://localhost:3000/api/todos/";
 let newDate = new Date();
 let day = newDate.getDate()+'/'+newDate.getMonth()+'/'+newDate.getFullYear();
 class PageTask extends React.Component {
-  
+ 
+
+
   state = {
     data: [],
     dataid: [],
+    names:[],
+    form:{
+      id:'',
+      title:'',
+      name:'',
+      completed:'',
+    },
+    update:{name:''},
     modalInsertar: false,
   };
   peticionGet = () => {
@@ -43,6 +52,14 @@ class PageTask extends React.Component {
     });
   };
 
+  peticionUpdate= (id, data)=>{
+    console.log('peticion put : '+url+'/'+id);
+    axios.put(url+'/'+id,data).then((response) => {
+    }).catch(err => {
+      console.log(err.message);
+    });
+  }
+
   componentDidMount() {
     this.peticionGet();
   }
@@ -50,11 +67,17 @@ class PageTask extends React.Component {
     this.peticionGet();
   }
 
-rowEvents={
-  onClick : (row) =>{
-    console.log(row);
-  }
-}
+  handleChange=async e=>{
+    e.persist();
+    await this.setState({
+      dataid:{
+        ...this.state.dataid,
+        [e.target.name]: e.target.value
+      }
+    });
+    }
+
+
 modalInsertar = () => {
   this.setState({ modalInsertar: !this.state.modalInsertar });
 };
@@ -66,7 +89,19 @@ this.peticionGetId(params);
   console.log(this.state.dataid);
 }
 
+valoresUpdate = (id)=>{
+let valorstatus = document.getElementById('statusup').value;
+ let datas = qs.stringify({
+ // 'data': '{ "name":"'+this.state.dataid.name+'", "compled":"'+valorstatus+'" }' 
+'data': '{ "name":"'+this.state.dataid.name+'", "title":"'+this.state.dataid.title+'", "compled":"'+valorstatus+'" }' 
+ });
+ this.peticionUpdate(id,datas);
+
+}
+
   render() {
+    //const {update} = this.state;
+   // const {data} = this.state;
     return (
       <div className="table-responsive">
         <NavBar />
@@ -74,7 +109,7 @@ this.peticionGetId(params);
         <table className="table" data-toogle="table" rowEvents={this.rowEvents}>
           <thead>
             <tr>
-              <th scope="col">#</th>
+              <th scope="col"></th>
               <th scope="col">Title</th>
               <th scope="col">Created</th>
               <th scope="col">Description</th>
@@ -103,7 +138,7 @@ this.peticionGetId(params);
                   <td>{task.title}</td>
                   <td>{day}</td>
                   <td>{task.name}</td>
-                  <td className="">{task.id}</td>
+                  <td className="isd">{task.id}</td>
 
                 </tr>
               )
@@ -126,11 +161,11 @@ this.peticionGetId(params);
             <br/>
                     {(() => {
         switch (this.state.dataid.completed) {
-          case 1:   return    <select class="custom-select" id="inputGroupSelect01">
+          case 1:   return    <select class="custom-select" id="statusup">
                                 <option value="1" selected >Status: Ready</option> 
                                 <option value="0" >Status: Pending</option>
                                 </select>
-          case 0: return  <select class="custom-select" id="inputGroupSelect01">
+          case 0: return  <select class="custom-select" id="statusup">
                                <option value="1" >Status: Ready</option> 
                                 <option value="0" selected>Status: Pending</option>
                                    </select>
@@ -151,14 +186,14 @@ this.peticionGetId(params);
               <h5 className="fuent"> <strong>Description</strong>  </h5>
 
               <div class="form-group">
-               <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" value={this.state.dataid.name}></textarea>
+               <textarea class="form-control" name="name" id="nameup" rows="5" value={this.state.dataid.name}  onChange={this.handleChange} > </textarea>
                 </div>
           </div>
 
           <div class="modal-footer foote">
 
             <div className="btns">
-              <button type="button"  class="btn btnn"  data-dismiss="modal" >
+              <button type="button"  class="btn btnn" id="statusup" data-dismiss="modal" onClick={()=> this.valoresUpdate(this.state.dataid.id)} >
               <img src={edit} className="im"></img>
             <strong>  Edit</strong></button>
             </div>

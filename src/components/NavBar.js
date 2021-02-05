@@ -33,21 +33,15 @@ class NavBar extends React.Component {
     }
 
     peticionPost=async()=>{
-
     let datas = qs.stringify({
       'data': '{ "name":"'+this.state.form.name+'", "title":"'+this.state.form.title+'"}' 
      });
-   console.log(url);
      await axios.post(url, datas).then(response=>{
         this.modalInsertar();
-      //  this.peticionGet();
-     // {peticionGet}
-     //provicional
      window.location.reload(true);
       }).catch(error=>{
         console.log(error.message);
       })
-
     }
  
 
