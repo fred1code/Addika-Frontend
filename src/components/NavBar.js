@@ -14,7 +14,8 @@ class NavBar extends React.Component {
     form:{
       name:'',
       title:'',
-    }
+    },
+    errors:{},
   };
 
   modalInsertar = () => {
@@ -33,6 +34,11 @@ class NavBar extends React.Component {
     }
 
     peticionPost=async()=>{
+
+      if(!this.state.form.title){
+        this.state.errors["name"] = "Required"; 
+      }if(this.state.form.title){
+     
     let datas = qs.stringify({
       'data': '{ "name":"'+this.state.form.name+'", "title":"'+this.state.form.title+'"}' 
      });
@@ -42,6 +48,9 @@ class NavBar extends React.Component {
       }).catch(error=>{
         console.log(error.message);
       })
+
+    }
+
     }
  
 
@@ -88,11 +97,12 @@ class NavBar extends React.Component {
             <div>
                <p>Title (requiered)</p>
             <input type="text" name="title" className="form-control"  onChange={this.handleChange} value={form.title} required />
+            <span style={{color: "#A80F2E"}}>{this.state.errors["name"]}</span>
             </div>
 
             <div>
                <p>Description</p>
-            <input type="textarea" name="name" className="form-control area"  onChange={this.handleChange} value={form.name} />
+            <textarea type="textarea" name="name" className="form-control area" rows="5" onChange={this.handleChange} value={form.name}></textarea>
             </div>
            
           </ModalBody>

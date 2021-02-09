@@ -109,7 +109,6 @@ let valorstatus = document.getElementById('statusup').value;
       <div className="titlehead">
         <h2> <strong>My Tasks</strong> </h2>
       </div>
-      
 
       <div className="table-responsive">
         <NavBar />
@@ -153,7 +152,6 @@ let valorstatus = document.getElementById('statusup').value;
             })}      
           </tbody>
         </table>.
-
 
         <div id="myModalRight" class="modal fade modal-right mdsize" tabindex="-1" role="dialog" >
       <div class="modal-dialog respos" role="document">
