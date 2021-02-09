@@ -17,16 +17,16 @@
     "react-dom": "^17.0.1",
     "react-scripts": "4.0.2",
     "reactstrap": "^8.9.0",
-    "web-vitals": "^1.1.0",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^4.5.0"
+    "web-vitals": "^1.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "buildweb": "webpack --mode production",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "build:devo": "webpack-dev-server --config ./webpack.dev.config.js",
+    "build:dev": "webpack serve --config ./webpack.dev.config.js"
   },
   "eslintConfig": {
     "extends": [
@@ -53,11 +53,22 @@
   ],
   "devDependencies": {
     "@babel/core": "^7.12.3",
+    "@babel/plugin-proposal-class-properties": "7.12.13",
+    "@babel/plugin-syntax-dynamic-import": "7.8.3",
     "@babel/plugin-transform-arrow-functions": "^7.12.13",
+    "@babel/plugin-transform-runtime": "7.12.1",
     "@babel/preset-env": "^7.12.13",
     "@babel/preset-react": "^7.12.13",
+    "@babel/runtime": "7.12.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^8.1.0",
-    "babel-preset-env": "^1.7.0"
+    "babel-preset-env": "^1.7.0",
+    "css-loader": "4.3.0",
+    "file-loader": "6.1.1",
+    "html-webpack-plugin": "4.5.0",
+    "style-loader": "1.3.0",
+    "webpack": "4.44.2",
+    "webpack-cli": "4.5.0",
+    "webpack-dev-server": "3.11.0"
   }
 }
