@@ -169,11 +169,11 @@ let valorstatus = document.getElementById('statusup').value;
             <br/>
                     {(() => {
         switch (this.state.dataid.completed) {
-          case 1:   return    <select class="custom-select" id="statusup">
+          case 1:   return    <select class="form-control" id="statusup">
                                 <option value="1" selected >Status: Ready</option> 
                                 <option value="0" >Status: Pending</option>
                                 </select>
-          case 0: return  <select class="custom-select" id="statusup">
+          case 0: return  <select class="form-control" id="statusup">
                                <option value="1" >Status: Ready</option> 
                                 <option value="0" selected>Status: Pending</option>
                                    </select>
@@ -194,7 +194,7 @@ let valorstatus = document.getElementById('statusup').value;
               <h5 className="fuent"> <strong>Description</strong>  </h5>
 
               <div class="form-group">
-               <textarea class="form-control" name="name" id="nameup" rows="5" value={this.state.dataid.name}  onChange={this.handleChange} > </textarea>
+               <textarea class="form-control texx" name="name" id="nameup" rows="5" value={this.state.dataid.name}  onChange={this.handleChange} > </textarea>
                 </div>
           </div>
 

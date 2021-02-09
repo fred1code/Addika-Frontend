@@ -20,6 +20,13 @@
 .btn {
   color: #3c5cbf;
   margin-left: -50px;
+  height: 40px;
+    width: 161px;
+
+}
+.btn:hover{
+  background: #F4F5F7;
+  color: #3C5CBF;
 }
 
 .im {
@@ -66,6 +73,26 @@ padding-bottom: 10px;
 .area{
   height: 150px;
 }
+.form-control:hover{
+  border: #393F57 1px solid;
+}
+.form-control:focus{
+  border: #3C5CBF 1px solid;
+  box-shadow: none;
+}
+
+input[type=date]::before {
+content: "Created:  ";
+
+}
+input[type=date] {
+ border:#C7CAD1 1px solid;
+color: #727888;
+
+}
+
+
+
 
 @media (max-width: 1030px) {
     .containers{
@@ -79,6 +106,27 @@ padding-bottom: 10px;
   }
 @media (max-width: 520px) {
     .containers{
-        grid-template-columns: 25% 50% 25%;
+       grid-template-columns: repeat(1, 1fr);
+       grid-template-rows: repeat(2, 1fr);
     }
+    .gr1{
+      grid-row-start: 1;
+      grid-row-end: 1;
+    }
+    .gr2{
+      grid-row-start: 2;
+      grid-row-end: 2;
+    }
+    .gr3{
+      grid-row-start: 2;
+      grid-row-end: 2;
+    }
+  }
+
+  @media (max-width: 400px) {
+    input[type=date]::before {
+      content: "";
+      
+      }
+    
   }

@@ -54,8 +54,10 @@ class NavBar extends React.Component {
     return (
       <div>
         <nav className="navbar navbar-light containers">
-          <div className="item tas"> <strong> Tasks </strong></div>
-          <div class=" row item time">
+         
+          <div className="item tas gr1"> <strong> Tasks </strong></div>
+         
+          <div class=" row item time gr2">
             <div class="col-10">
               <input
                 className="form-control"
@@ -67,11 +69,11 @@ class NavBar extends React.Component {
             <div className="v1"></div>
           </div>
 
-          <div className="item">
+          <div className="item gr3">
             <button className="btn" onClick={() => this.modalInsertar()}>
               <img src={ad} className="im" />
 
-              <strong>Add task</strong>
+              <strong>Add Task</strong>
             </button>
           </div>
         </nav>
@@ -85,7 +87,7 @@ class NavBar extends React.Component {
           <ModalBody>
             <div>
                <p>Title (requiered)</p>
-            <input type="text" name="title" className="form-control"  onChange={this.handleChange} value={form.title} />
+            <input type="text" name="title" className="form-control"  onChange={this.handleChange} value={form.title} required />
             </div>
 
             <div>
