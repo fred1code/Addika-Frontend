@@ -120,7 +120,7 @@ let valorstatus = document.getElementById('statusup').value;
               <th scope="col"></th>
               <th scope="col">Title</th>
               <th scope="col">Created</th>
-              <th scope="col">Description</th>
+              <th scope="col" className="colname">Description</th>
             </tr>
           </thead>
 
@@ -145,7 +145,7 @@ let valorstatus = document.getElementById('statusup').value;
                   </th>
                   <td>{task.title}</td>
                   <td>{day}</td>
-                  <td>{task.name}</td>
+                  <td className="colname">{task.name}</td>
                   <td className="isd">{task.id}</td>
 
                 </tr>
@@ -156,24 +156,23 @@ let valorstatus = document.getElementById('statusup').value;
 
 
         <div id="myModalRight" class="modal fade modal-right mdsize" tabindex="-1" role="dialog" >
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog respos" role="document">
         <div class="modal-content">
-          <div class="modal-header">
+          <div className="modal-header mdgrid0" >
            
             <button
-              type="button" class="close"  data-dismiss="modal" aria-label="Close">
+              type="button" className="close mdgrid1"  data-dismiss="modal"  aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
-            <br/>
-              <h4 class="modal-title" className="fuent"> <strong> {this.state.dataid.title} </strong></h4>
-            <br/>
+              <h4 className="modal-title mdgrid2" > <strong> {this.state.dataid.title} </strong></h4>
+         
                     {(() => {
         switch (this.state.dataid.completed) {
-          case 1:   return    <select class="form-control" id="statusup">
+          case 1:   return    <select className="form-control mdgrid3" id="statusup" >
                                 <option value="1" selected >Status: Ready</option> 
                                 <option value="0" >Status: Pending</option>
                                 </select>
-          case 0: return  <select class="form-control" id="statusup">
+          case 0: return  <select className="form-control mdgrid3" id="statusup" >
                                <option value="1" >Status: Ready</option> 
                                 <option value="0" selected>Status: Pending</option>
                                    </select>
@@ -183,15 +182,15 @@ let valorstatus = document.getElementById('statusup').value;
           </div>
 
           <div class="modal-body">
-            <h5 className="fuent">
+            <h6 className="fuent fuentpd">
               <strong>
                 Created
               </strong>
-            </h5>
-            <h6>27/jan/2021</h6>
-            <br/>
+            </h6>
+            <h7>27/jan/2021</h7>
+            
 
-              <h5 className="fuent"> <strong>Description</strong>  </h5>
+              <h6 className="fuent fuentpdd"> <strong>Description</strong>  </h6>
 
               <div class="form-group">
                <textarea class="form-control texx" name="name" id="nameup" rows="5" value={this.state.dataid.name}  onChange={this.handleChange} > </textarea>

@@ -99,10 +99,10 @@ class NavBar extends React.Component {
           <ModalFooter>
                 <button
                   type="button"
-                  className="btn btn-secondary mod cor"
+                  className="btn btn-secondary mod cor btgrid1"
                   onClick={() => this.modalInsertar()}
                 >Canselar</button>
-                <button type="button" className="btn btn-prima mod" onClick={()=>this.peticionPost()}>
+                <button type="button" className="btn btn-prima mod btngrid2" onClick={()=>this.peticionPost()}>
                   Save
                 </button>
           </ModalFooter>

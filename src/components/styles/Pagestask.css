@@ -11,6 +11,7 @@ html{
 .titlehead{
   background: #f4f5f7;
   padding-bottom: 2%;
+  color: #1D223F;
 }
 .checks {
   width: 25px;
@@ -43,6 +44,7 @@ html{
 }
 .texx{
   color: #1D223F;
+  border: 1px solid transparent;
 }
 .btns{
     width: 100px;
@@ -70,4 +72,55 @@ color:#1D223F;
     outline: none;
     background: white;
     border: 1px solid white;
+}
+.respos{
+  display: flex;
+  height: 100vh;
+ 
+}
+.modal-header{
+  padding: 2rem 1rem;
+  border-bottom: 0;
+}
+
+.mdgrid0{
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: repeat(3, 1fr);
+  grid-gap: 15%;
+}
+.mdgrid1{
+  grid-row-start: 1;
+      grid-row-end: 1;
+}
+.mdgrid2{
+  grid-row-start: 2;
+  grid-row-end: 2;
+}
+.mdgrid3{
+  grid-row-start: 3;
+  grid-row-end: 3;
+}
+.fuentpd{
+ padding-top: 5%;
+}
+.fuentpdd{
+padding-top: 10%;
+}
+
+
+@media (max-width: 520px) {
+  .colname{
+    display: none;
+  }
+  .mdsize {
+   width: 99%; 
+  }
+  .respos{
+    display: flex;
+    height: 100vh;
+    padding-right: 0;
+    padding-left: 5%;
+  }
+  
 }
