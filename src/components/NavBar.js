@@ -54,7 +54,7 @@ class NavBar extends React.Component {
     return (
       <div>
         <nav className="navbar navbar-light containers">
-          <div className="item tas">Task</div>
+          <div className="item tas"> <strong> Tasks </strong></div>
           <div class=" row item time">
             <div class="col-10">
               <input

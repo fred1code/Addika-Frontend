@@ -103,6 +103,14 @@ let valorstatus = document.getElementById('statusup').value;
     //const {update} = this.state;
    // const {data} = this.state;
     return (
+
+      
+      <div className="headcont">
+      <div className="titlehead">
+        <h2> <strong>My Tasks</strong> </h2>
+      </div>
+      
+
       <div className="table-responsive">
         <NavBar />
 
@@ -212,6 +220,7 @@ let valorstatus = document.getElementById('statusup').value;
     </div>
 
 
+      </div>
       </div>
     );
   }
