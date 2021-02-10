@@ -10,6 +10,7 @@ import dele from '../images/delete.svg';
 const qs = require('qs');
 
 const url = "http://localhost:3000/api/todos/";
+//const url = "http://tu-ip-externa:3000/api/todos/";
 let newDate = new Date();
 let day = newDate.getDate()+'/'+newDate.getMonth()+'/'+newDate.getFullYear();
 class PageTask extends React.Component {

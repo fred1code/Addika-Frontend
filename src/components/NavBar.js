@@ -7,6 +7,7 @@ import axios from "axios";
 const qs = require('qs');
 
 const url = "http://localhost:3000/api/todos/";
+//const url = "http://tu-ip-externa:3000/api/todos/";
 
 class NavBar extends React.Component {
   state = {
