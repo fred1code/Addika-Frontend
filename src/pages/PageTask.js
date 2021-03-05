@@ -4,9 +4,11 @@ import img from "../images/check-out.svg";
 import img1 from "../images/check-in.svg";
 import "../components/styles/Pagestask.css";
 import axios from "axios";
-import { Button } from "bootstrap";
 import edit from '../images/pen.svg';
 import dele from '../images/delete.svg';
+import { connect } from 'react-redux';
+import * as taskActions from '../actions/taskActions';
+
 const qs = require('qs');
 
 const url = "http://localhost:3000/api/todos/";
@@ -62,10 +64,11 @@ class PageTask extends React.Component {
   }
 
   componentDidMount() {
-    this.peticionGet();
+   this.props.traerTodos();
+    // this.peticionGet();
   }
   componentDidUpdate(){
-    this.peticionGet();
+   // this.peticionGet();
   }
 
   handleChange=async e=>{
@@ -93,7 +96,6 @@ this.peticionGetId(params);
 valoresUpdate = (id)=>{
 let valorstatus = document.getElementById('statusup').value;
  let datas = qs.stringify({
- // 'data': '{ "name":"'+this.state.dataid.name+'", "compled":"'+valorstatus+'" }' 
 'data': '{ "name":"'+this.state.dataid.name+'", "title":"'+this.state.dataid.title+'", "compled":"'+valorstatus+'" }' 
  });
  this.peticionUpdate(id,datas);
@@ -101,8 +103,7 @@ let valorstatus = document.getElementById('statusup').value;
 }
 
   render() {
-    //const {update} = this.state;
-   // const {data} = this.state;
+  
     return (
 
       
@@ -125,7 +126,7 @@ let valorstatus = document.getElementById('statusup').value;
           </thead>
 
           <tbody >
-            {this.state.data.map(task=>{
+            {this.props.task.map(task=>{
               return(
                 <tr>
                   <th>
@@ -223,5 +224,8 @@ let valorstatus = document.getElementById('statusup').value;
     );
   }
 }
+const mapStateToProps = (reducers) => {
+  return reducers.taskReducer;
+};
 
-export default PageTask;
+export default connect(mapStateToProps, taskActions)(PageTask);
