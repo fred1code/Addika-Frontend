@@ -4,6 +4,7 @@ import img from "../images/check-out.svg";
 import img1 from "../images/check-in.svg";
 import "../components/styles/Pagestask.css";
 import axios from "axios";
+import { Button } from "bootstrap";
 import edit from '../images/pen.svg';
 import dele from '../images/delete.svg';
 import { connect } from 'react-redux';
@@ -68,7 +69,7 @@ class PageTask extends React.Component {
     // this.peticionGet();
   }
   componentDidUpdate(){
-   // this.peticionGet();
+    this.peticionGet();
   }
 
   handleChange=async e=>{
