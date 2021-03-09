@@ -2,7 +2,7 @@
   margin-top: 3%;
   margin-left: 2%;
   margin-right: 2%;
-  margin-bottom: 2%;
+  
 
   background: white;
 }
@@ -21,7 +21,7 @@ html{
   display: none;
 }
 .table-responsive{
-  padding-bottom: 50%;
+  padding-bottom: 100%;
 }
 
 .modal.modal-right .modal-dialog {
@@ -122,6 +122,10 @@ padding-top: 10%;
     height: 100vh;
     padding-right: 0;
     padding-left: 5%;
+  }
+
+  .foote{
+    padding-left: 50%;
   }
   
 }
