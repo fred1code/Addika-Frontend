@@ -67,12 +67,12 @@ class NavBar extends React.Component {
          
           <div className="item tas gr1"> <strong> Tasks </strong></div>
          
-          <div class=" row item time gr2">
-            <div class="col-10">
+          <div className=" row item time gr2">
+            <div className="col-10">
               <input
                 className="form-control"
                 type="date"
-                value="2011-08-19"
+                defaultValue="2011-08-19"
                 id="example-date-input"
               />
             </div>
